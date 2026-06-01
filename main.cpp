@@ -3,6 +3,7 @@
 #define SDL_MAIN_USE_CALLBACKS
 #include <SDL3/SDL_main.h>
 
+#include <defs.hpp>
 #include <FiguresCollection.hpp>
 #include <generate.hpp>
 
@@ -21,7 +22,7 @@ SDL_AppResult SDL_AppInit(void** appState, int argc, char** argv) {
 
     if (!SDL_CreateWindowAndRenderer(
                 "figures",
-                1024, 768,
+                SCREEN_WIDTH, SCREEN_HEIGHT,
                 0,
                 &window, &renderer)) {
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
@@ -29,7 +30,7 @@ SDL_AppResult SDL_AppInit(void** appState, int argc, char** argv) {
     }
     SDL_SetRenderLogicalPresentation(
             renderer,
-            1024, 768,
+            SCREEN_WIDTH, SCREEN_HEIGHT,
             SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
     generate(figures, 10);

@@ -1,16 +1,12 @@
 #include <Square.hpp>
 
-#include <SDL3/SDL.h>
-
-Square::~Square() {
+Square::Square(int x, int y, int size) {
+    rect_.x = x;
+    rect_.y = y;
+    rect_.w = rect_.h = size;
 }
 
 void Square::draw(SDL_Renderer* renderer) const {
-    SDL_FRect rect;
-    rect.x = 100;
-    rect.y = 100;
-    rect.h = rect.w = 300;
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    SDL_RenderRect(renderer, &rect);
-    // SDL_RenderFillRect(renderer, &rect);
+    SDL_RenderRect(renderer, &rect_);
 }
