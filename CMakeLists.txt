@@ -9,9 +9,14 @@ add_executable(
     ${PROJECT_NAME}
 
     main.cpp
+    generate.cpp
+    Figure.cpp
+    FiguresCollection.cpp
 )
 
 add_subdirectory(external EXCLUDE_FROM_ALL)
+
+include_directories(".")
 
 target_link_libraries(
     ${PROJECT_NAME}

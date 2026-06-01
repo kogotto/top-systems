@@ -3,9 +3,14 @@
 #define SDL_MAIN_USE_CALLBACKS
 #include <SDL3/SDL_main.h>
 
+#include <FiguresCollection.hpp>
+#include <generate.hpp>
+
 namespace {
 SDL_Window* window = nullptr;
 SDL_Renderer* renderer = nullptr;
+
+FiguresCollection figures;
 }
 
 SDL_AppResult SDL_AppInit(void** appState, int argc, char** argv) {
@@ -27,6 +32,8 @@ SDL_AppResult SDL_AppInit(void** appState, int argc, char** argv) {
             1024, 768,
             SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
+    generate(figures, 10);
+
     return SDL_APP_CONTINUE;
 }
 
@@ -47,6 +54,9 @@ SDL_AppResult SDL_AppEvent(void* appState, SDL_Event* event) {
 }
 
 SDL_AppResult SDL_AppIterate(void* appState) {
+    for (const auto& figure : figures.getAll()) {
+        figure->draw(renderer);
+    }
     return SDL_APP_CONTINUE;
 }
 
