@@ -1,9 +1,11 @@
 #include <generate.hpp>
 
+#include <Square.hpp>
+
 namespace {
 
 UFigure generateFigure() {
-    return nullptr;
+    return std::make_unique<Square>();
 }
 
 } // namespace

@@ -12,6 +12,7 @@ add_executable(
     generate.cpp
     Figure.cpp
     FiguresCollection.cpp
+    Square.cpp
 )
 
 add_subdirectory(external EXCLUDE_FROM_ALL)

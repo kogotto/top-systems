@@ -54,9 +54,14 @@ SDL_AppResult SDL_AppEvent(void* appState, SDL_Event* event) {
 }
 
 SDL_AppResult SDL_AppIterate(void* appState) {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
     for (const auto& figure : figures.getAll()) {
         figure->draw(renderer);
     }
+
+    SDL_RenderPresent(renderer);
     return SDL_APP_CONTINUE;
 }
 
