@@ -6,6 +6,7 @@
 
 #include <defs.hpp>
 #include <Square.hpp>
+#include <Circle.hpp>
 
 namespace {
 
@@ -21,10 +22,19 @@ USquare generateRandomSquare() {
     return std::make_unique<Square>(x, y, size);
 }
 
+UCircle generateRandomCircle() {
+    const int x = SDL_rand(SCREEN_WIDTH);
+    const int y = SDL_rand(SCREEN_HEIGHT);
+    const int radius = SDL_rand(SCREEN_HEIGHT / 4);
+    return std::make_unique<Circle>(x, y, radius);
+}
+
 UFigure generateFigure() {
     switch (const auto figureType = randomFigureType()) {
     case FigureType::Square:
         return generateRandomSquare();
+    case FigureType::Circle:
+        return generateRandomCircle();
     default:
         assert(false && "Unknown figure type");
     }

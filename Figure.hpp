@@ -6,6 +6,7 @@ struct SDL_Renderer;
 
 enum class FigureType {
     Square,
+    Circle,
 
     count
 };
