@@ -10,3 +10,11 @@ add_executable(
 
     main.cpp
 )
+
+add_subdirectory(external EXCLUDE_FROM_ALL)
+
+target_link_libraries(
+    ${PROJECT_NAME}
+
+    PRIVATE SDL3::SDL3
+)
